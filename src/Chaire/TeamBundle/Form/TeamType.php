@@ -35,7 +35,7 @@ class TeamType extends AbstractType
 
             ->add('category','choice', array(
                 'choices'   => array(0 => 'Team member', 1 => 'Club',2=>'Board'),
-                'required'  => false,
+                'required'  => true,
             ))
 
 

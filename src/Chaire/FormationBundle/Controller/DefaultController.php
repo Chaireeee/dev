@@ -185,6 +185,34 @@ class DefaultController extends Controller
         ));
     }
 
+    public function modifyphotoreturnAction($id,$idformation)
+    {
+
+        $photo = $this->getDoctrine()->getManager()->getRepository('Chaire\FormationBundle\Entity\photo')->find($id);
+
+
+        $form = $this->get('form.factory')->create(new photoType(), $photo);
+
+        if ($form->handleRequest($this->getRequest())->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($photo);
+
+            $em->flush();
+
+            //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');
+
+            return $this->redirect($this->generateUrl('chaire_admin_modifyFormation',array('id'=>$idformation)));
+        }
+
+        return $this->render('ChaireFormationBundle:Default:addphoto.html.twig', array(
+            'form' => $form->createView()
+
+        ));
+    }
+
+
+
+
     public function modifyphotoeventAction($id,$idformation)
     {
 

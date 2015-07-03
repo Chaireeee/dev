@@ -110,7 +110,8 @@ a:focus,a:hover{
 
 /* team page */
 .photo_team{
-    width:150px;
+    max-width:150px;
+    max-height:150px;
     border-radius: 75px;
 
     filter: grayscale(1);
