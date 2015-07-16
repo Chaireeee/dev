@@ -56,11 +56,38 @@
 
                     {% for form in studentescp %}
                         <div class="col-md-4">
+                            {% if loc=='en' %}
+                            <h4 style="text-align:center;">{{ form.nameEn }}</h4>
+                            {% else %}
+                                <h4 style="text-align:center;">{{ form.name }}</h4>
+                            {% endif %}
 
-                            <h4 style="text-align:center;">{{ form.name }}</h4>
-                            <a href="{{ path('chaire_formation_id',{'id':form.id}) }}"><img style=" width:250px;" src="{{ asset('uploads/img/'~form.photo.id~'.'~form.photo.url) }}"></a>
+                            {% if loc=='en' %}
+                            {% if form.pageEn is not null %}
+                            <a href="{{ path('generateur_view_page',{id:form.pageEn.id}) }}">
+                                {% else %}
+
+                                {% if form.page is not null%}
+                                <a href="{{ path('generateur_view_page',{id:form.page.id}) }}">
+                                {% endif %}
+
+                                    {% endif %}
+                                    {% else %}
+                                    {% if form.page is not null%}
+                                    <a href="{{ path('generateur_view_page',{id:form.page.id}) }}">
+                                        {% endif %}
+                                        {% endif %}
+
+
+                                <img style=" width:250px;" src="{{ asset(form.Logo.getWebPath()) }}">
+                            </a>
                             <p style="text-align:center;">
-                                {{ form.concept }}
+
+                                {% if loc=='en' %}
+                                    {{ form.conceptEn}}
+                                {% else %}
+                                    {{ form.concept }}
+                                    {% endif %}
 
                             </p>
 
@@ -77,9 +104,9 @@
                         <div class="col-md-4">
 
                             <h4 style="text-align:center;">{{ form.name }}</h4>
-                            <img style=" width:250px;" src="{{ asset('uploads/img/'~form.photolink) }}">
+                            <img style=" width:250px;" src="{{ asset(form.Logo.getWebPath()) }}">
                             <p style="text-align:center;">
-                                {{ form.concept }}
+                                {{ form.concept |raw }}
 
                             </p>
 
@@ -98,9 +125,9 @@
                         <div class="col-md-4">
 
                             <h4 style="text-align:center;">{{ form.name }}</h4>
-                            <img style=" width:250px;" src="{{ asset('uploads/img/'~form.photolink) }}">
+                            <img style=" width:250px;" src="{{ asset(form.Logo.getWebPath()) }}">
                             <p style="text-align:center;">
-                                {{ form.concept }}
+                                {{ form.concept |raw}}
 
                             </p>
 

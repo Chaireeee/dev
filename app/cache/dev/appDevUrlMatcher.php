@@ -272,6 +272,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'generateur_add_page_from_accompagnement')), array (  '_controller' => 'GenerateurBundle\\Controller\\PageController::addnewPagefromaccompagnementAction',));
         }
 
+        // generateur_add_page_from_accompagnementEn
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/add/new/pagefromaccompagnementEn$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'generateur_add_page_from_accompagnementEn')), array (  '_controller' => 'GenerateurBundle\\Controller\\PageController::addnewPagefromaccompagnementEnAction',));
+        }
+
+        // generateur_add_page_from_formation
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/add/new/pagefromformation$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'generateur_add_page_from_formation')), array (  '_controller' => 'GenerateurBundle\\Controller\\PageController::addnewPagefromformationAction',));
+        }
+
+        // generateur_add_page_from_formationEn
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/add/new/pagefromformationEn$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'generateur_add_page_from_formationEn')), array (  '_controller' => 'GenerateurBundle\\Controller\\PageController::addnewPagefromformationEnAction',));
+        }
+
         // generateur_modify_info_page
         if (preg_match('#^/(?P<_locale>[^/]++)/paris/modify/page/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'generateur_modify_info_page')), array (  '_controller' => 'GenerateurBundle\\Controller\\PageController::modifyPageinfoAction',));
@@ -617,7 +632,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         not_formation_delete:
 
         // accompagnement_create
-        if (preg_match('#^/(?P<_locale>[^/]++)/paris/admin/accompagnement/$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/admin/accompagnement/addacc$#s', $pathinfo, $matches)) {
             if ($this->context->getMethod() != 'POST') {
                 $allow[] = 'POST';
                 goto not_accompagnement_create;
@@ -710,6 +725,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // chaire_modify_photo_accompagnement
         if (preg_match('#^/(?P<_locale>[^/]++)/paris/modifyphotofromaccompagnement/(?P<id>[^/]++)/(?P<idaccompagnement>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'chaire_modify_photo_accompagnement')), array (  '_controller' => 'Chaire\\FormationBundle\\Controller\\DefaultController::modifyphotoaccompagnementAction',));
+        }
+
+        // chaire_modify_photo_return
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/modifyphoto/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'chaire_modify_photo_return')), array (  '_controller' => 'Chaire\\FormationBundle\\Controller\\DefaultController::modifyphotoreturnAction',));
+        }
+
+        // chaire_add_page_to_formation
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/addpagetoformation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'chaire_add_page_to_formation')), array (  '_controller' => 'Chaire\\FormationBundle\\Controller\\DefaultController::addpagetoformationAction',));
+        }
+
+        // chaire_add_page_to_formationEn
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/addpagetoformationen/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'chaire_add_page_to_formationEn')), array (  '_controller' => 'Chaire\\FormationBundle\\Controller\\DefaultController::addpagetoformationEnAction',));
         }
 
         // chaire_admin_homepage
@@ -818,6 +848,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // accompagnement
         if (preg_match('#^/(?P<_locale>[^/]++)/paris/accompagnement$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'accompagnement')), array (  '_controller' => 'Chaire\\AccueilBundle\\Controller\\DefaultController::accompagnementAction',));
+        }
+
+        // add_page_to_accompagnement
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/addpagetoaccompagnement/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_page_to_accompagnement')), array (  '_controller' => 'Chaire\\AccueilBundle\\Controller\\DefaultController::addpagetoaccompagnementAction',));
+        }
+
+        // add_page_to_accompagnementEn
+        if (preg_match('#^/(?P<_locale>[^/]++)/paris/addpagetoaccompagnementen/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'add_page_to_accompagnementEn')), array (  '_controller' => 'Chaire\\AccueilBundle\\Controller\\DefaultController::addpagetoaccompagnementEnAction',));
         }
 
         // _welcome

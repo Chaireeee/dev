@@ -21,3 +21,19 @@ chaire_modify_photo_event:
 chaire_modify_photo_accompagnement:
     path:     /modifyphotofromaccompagnement/{id}/{idaccompagnement}
     defaults: { _controller: ChaireFormationBundle:Default:modifyphotoaccompagnement }
+
+
+chaire_modify_photo_return:
+    path:     /modifyphoto/{id}
+    defaults: { _controller: ChaireFormationBundle:Default:modifyphotoreturn }
+
+
+chaire_add_page_to_formation:
+    path:     /addpagetoformation/{id}
+    defaults: { _controller: ChaireFormationBundle:Default:addpagetoformation }
+
+
+chaire_add_page_to_formationEn:
+    path:     /addpagetoformationen/{id}
+    defaults: { _controller: ChaireFormationBundle:Default:addpagetoformationEn }
+

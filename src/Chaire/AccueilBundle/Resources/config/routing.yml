@@ -21,3 +21,11 @@ set_langage_native:
 accompagnement:
     path:     /accompagnement
     defaults: { _controller: ChaireAccueilBundle:Default:accompagnement }
+
+add_page_to_accompagnement:
+    path:     /addpagetoaccompagnement/{id}
+    defaults: { _controller: ChaireAccueilBundle:Default:addpagetoaccompagnement }
+
+add_page_to_accompagnementEn:
+    path:     /addpagetoaccompagnementen/{id}
+    defaults: { _controller: ChaireAccueilBundle:Default:addpagetoaccompagnementEn }

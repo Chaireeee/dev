@@ -120,6 +120,20 @@ generateur_add_page_from_accompagnement:
     defaults: { _controller: GenerateurBundle:Page:addnewPagefromaccompagnement}
 
 
+generateur_add_page_from_accompagnementEn:
+    path:     /add/new/pagefromaccompagnementEn
+    defaults: { _controller: GenerateurBundle:Page:addnewPagefromaccompagnementEn}
+
+generateur_add_page_from_formation:
+    path:     /add/new/pagefromformation
+    defaults: { _controller: GenerateurBundle:Page:addnewPagefromformation}
+
+generateur_add_page_from_formationEn:
+    path:     /add/new/pagefromformationEn
+    defaults: { _controller: GenerateurBundle:Page:addnewPagefromformationEn}
+
+
+
 generateur_modify_info_page:
     path:     /modify/page/{id}
     defaults: { _controller: GenerateurBundle:Page:modifyPageinfo}

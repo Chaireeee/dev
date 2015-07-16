@@ -14,6 +14,8 @@
                 <th>Nameen</th>
                 <th>Concept</th>
                 <th>Concepten</th>
+                <th>Page native langage</th>
+                <th>Page english</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,7 +29,34 @@
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.nameEn }}</td>
                 <td>{{ entity.concept }}</td>
-                <td>{{ entity.conceptEn }}</td>
+
+                <td>{{ entity.conceptEn }} </td>
+                    <td>
+                    {% if entity.page is not null %}
+                <a href={{ path('generateur_edit_page',{'id':entity.page.id  }) }}> modifier page</a>
+                {% else %}
+                    <a href="{{ path('chaire_add_page_to_formation',{id:entity.id}) }}">
+                        Ajouter une page
+                    </a>
+                {% endif %}
+
+
+
+
+                    </td>
+
+                <td>
+                    {% if entity.pageEn is not null %}
+                <a href={{ path('generateur_edit_page',{'id':entity.pageEn.id  }) }}> modifier page</a>
+            {% else %}
+                <a href="{{ path('chaire_add_page_to_formationEn',{id:entity.id}) }}">
+                    Ajouter une page
+                </a>
+                {% endif %}
+
+
+                    </td>
+
                 <td>
                 <ul>
                     <li>

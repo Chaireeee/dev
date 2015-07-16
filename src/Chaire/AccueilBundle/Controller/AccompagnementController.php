@@ -22,12 +22,13 @@ class AccompagnementController extends Controller
 
 
 
+
     /**
      * Lists all Accompagnement entities.
      *
      * @Route("/", name="accompagnement")
      * @Method("GET")
-     * @Template()
+     * @Template("ChaireAccueilBundle:Accompagnement:index.html.twig")
      */
     public function indexAction()
     {
@@ -39,10 +40,11 @@ class AccompagnementController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Accompagnement entity.
      *
-     * @Route("/", name="accompagnement_create")
+     * @Route("/addacc", name="accompagnement_create")
      * @Method("POST")
      * @Template("ChaireAccueilBundle:Accompagnement:new.html.twig")
      */

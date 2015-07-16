@@ -13,4 +13,6 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
+     <a href="{{ path('chaire_modify_photo_return',{'id':entity.logo.id}) }}"> edit picture</a>
 {% endblock %}

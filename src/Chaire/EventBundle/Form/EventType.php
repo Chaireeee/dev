@@ -34,7 +34,7 @@ class EventType extends AbstractType
 
             ->add('eventAddress', new AddressType(),array('label'=>'Event adress: '))
             ->add('logo', new photoType())
-            ->add('Imageentete', new photoType(),array('label'=>'Photo thumbnail (for the website): '))
+
             ->add('Save',      'submit',array('label'=>'Save','attr' => array('class' => 'btn btn-success btn-group-justified'),))
         ;
     }

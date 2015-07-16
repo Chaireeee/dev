@@ -83,6 +83,8 @@ class PageController extends Controller
         ));
     }
 
+
+
     public function addnewPagefromaccompagnementAction()
     {
         $page = new Page();
@@ -114,6 +116,103 @@ class PageController extends Controller
 
         ));
     }
+
+    public function addnewPagefromaccompagnementEnAction()
+    {
+        $page = new Page();
+
+
+        $form = $this->get('form.factory')->create(new PageType(), $page);
+
+        if ($form->handleRequest($this->getRequest())->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $eventid=$this->get('session')->get('accompagnement');
+            $em=$this->getDoctrine()->getManager()->getRepository('Chaire\AccueilBundle\Entity\Accompagnement');
+            $event=$em->find($eventid);
+            $event->setPageEn($page);
+
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($page);
+            $em->persist($event);
+
+            $em->flush();
+
+            //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');
+
+            return $this->editPageAction($page->getId());
+        }
+
+        return $this->render('GenerateurBundle:Page:addpage.html.twig', array(
+            'form' => $form->createView()
+
+        ));
+    }
+
+    public function addnewPagefromformationAction()
+    {
+        $page = new Page();
+
+
+        $form = $this->get('form.factory')->create(new PageType(), $page);
+
+        if ($form->handleRequest($this->getRequest())->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $eventid=$this->get('session')->get('formation');
+            $em=$this->getDoctrine()->getManager()->getRepository('Chaire\FormationBundle\Entity\Formation');
+            $event=$em->find($eventid);
+            $event->setPage($page);
+
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($page);
+            $em->persist($event);
+
+            $em->flush();
+
+            //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');
+
+            return $this->editPageAction($page->getId());
+        }
+
+        return $this->render('GenerateurBundle:Page:addpage.html.twig', array(
+            'form' => $form->createView()
+
+        ));
+    }
+
+    public function addnewPagefromformationEnAction()
+    {
+        $page = new Page();
+
+
+        $form = $this->get('form.factory')->create(new PageType(), $page);
+
+        if ($form->handleRequest($this->getRequest())->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $eventid=$this->get('session')->get('formation');
+            $em=$this->getDoctrine()->getManager()->getRepository('Chaire\FormationBundle\Entity\Formation');
+            $event=$em->find($eventid);
+            $event->setPageEn($page);
+
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($page);
+            $em->persist($event);
+
+            $em->flush();
+
+            //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');
+
+            return $this->editPageAction($page->getId());
+        }
+
+        return $this->render('GenerateurBundle:Page:addpage.html.twig', array(
+            'form' => $form->createView()
+
+        ));
+    }
+
 
     public function addnewPageAction()
     {

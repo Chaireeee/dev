@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Chaire\FormationBundle\Entity\Formation;
 use Chaire\FormationBundle\Form\FormationType;
+use Chaire\FormationBundle\Form\FormationEditType;
 
 /**
  * Formation controller.
@@ -76,7 +77,7 @@ class FormationController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -133,6 +134,8 @@ class FormationController extends Controller
      */
     public function editAction($id)
     {
+
+        $this->get('session')->set('precurl','http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ChaireFormationBundle:Formation')->find($id);
@@ -160,7 +163,7 @@ class FormationController extends Controller
     */
     private function createEditForm(Formation $entity)
     {
-        $form = $this->createForm(new FormationType(), $entity, array(
+        $form = $this->createForm(new FormationEditType(), $entity, array(
             'action' => $this->generateUrl('formation_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

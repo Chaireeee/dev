@@ -9,6 +9,22 @@ use Chaire\FormationBundle\Form\photoEditType;
 
 class DefaultController extends Controller
 {
+
+    public function addpagetoformationAction($id)
+    {
+        $this->get('session')->set('formation',$id);
+
+        return $this->redirect($this->generateUrl('generateur_add_page_from_formation'));
+    }
+
+    public function addpagetoformationEnAction($id)
+    {
+        $this->get('session')->set('formation',$id);
+
+        return $this->redirect($this->generateUrl('generateur_add_page_from_formationEn'));
+    }
+
+
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('ChaireFormationBundle:Formation');
@@ -185,13 +201,13 @@ class DefaultController extends Controller
         ));
     }
 
-    public function modifyphotoreturnAction($id,$idformation)
+    public function modifyphotoreturnAction($id)
     {
 
         $photo = $this->getDoctrine()->getManager()->getRepository('Chaire\FormationBundle\Entity\photo')->find($id);
 
 
-        $form = $this->get('form.factory')->create(new photoType(), $photo);
+        $form = $this->get('form.factory')->create(new photoEditType(), $photo);
 
         if ($form->handleRequest($this->getRequest())->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -201,7 +217,7 @@ class DefaultController extends Controller
 
             //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('chaire_admin_modifyFormation',array('id'=>$idformation)));
+            return $this->redirect($this->get('session')->get('precurl'));
         }
 
         return $this->render('ChaireFormationBundle:Default:addphoto.html.twig', array(

@@ -48,4 +48,33 @@ class DefaultController extends Controller
 
 
     }
+
+    public function addpagetoaccompagnementAction($id)
+    {
+
+
+        $this->get('session')->set('accompagnement',$id);
+
+
+    return $this->redirect( $this->generateUrl('generateur_add_page_from_accompagnement'));
+
+
+
+    }
+
+    public function addpagetoaccompagnementEnAction($id)
+    {
+
+
+        $this->get('session')->set('accompagnement',$id);
+
+
+        return $this->redirect( $this->generateUrl('generateur_add_page_from_accompagnementEn'));
+
+
+
+    }
+
+
+
 }

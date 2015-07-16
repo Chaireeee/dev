@@ -5,6 +5,7 @@ namespace Chaire\FormationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Chaire\FormationBundle\Form\photoType;
 
 class FormationType extends AbstractType
 {
@@ -18,10 +19,20 @@ class FormationType extends AbstractType
             ->add('student_escp')
             ->add('student_exte')
             ->add('executive')
-            ->add('name')
-            ->add('nameEn')
-            ->add('concept')
-            ->add('conceptEn')
+            ->add('name','text',array('label'=>'Formation name in native langage: '))
+            ->add('nameEn','text',array('label'=>'Formation name in English: '))
+
+            ->add('concept', 'textarea',array('label'=>'Concept in native langage: '))
+
+            ->add('conceptEn', 'textarea',array('label'=>'Concept in English: '))
+
+            ->add('Logo', new photoType())
+            ->add('Save',      'submit',array('label'=>'Save','attr' => array('class' => 'btn btn-success btn-group-justified'),))
+
+
+
+
+
         ;
     }
     

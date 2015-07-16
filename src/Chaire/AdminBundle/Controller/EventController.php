@@ -63,6 +63,7 @@ class EventController extends Controller
     public function modifyEventAction($id,Request $request)
     {
 
+        $this->get('session')->set('precurl','http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
         $repository = $this->getDoctrine()->getManager()->getRepository('ChaireEventBundle:Event');
         $event = $repository->find($id);
 
@@ -71,7 +72,7 @@ class EventController extends Controller
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
-            $event->upload();
+
             $em->flush();
 
             //$request->getSession()->getFlashBag()->add('notice', 'Event bien enregistrée.');

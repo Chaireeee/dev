@@ -75,10 +75,7 @@ class Event
      */
     private $Logo;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Chaire\FormationBundle\Entity\photo", cascade={"persist","remove"})
-     */
-    private $Imageentete;
+
 
     /**
      * @ORM\OneToOne(targetEntity="GenerateurBundle\Entity\Page", cascade={"persist","remove"})

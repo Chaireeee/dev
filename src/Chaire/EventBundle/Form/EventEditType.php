@@ -17,7 +17,7 @@ class EventEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->remove('filephoto')
+            ->remove('logo')
 
         ;
     }
